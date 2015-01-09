@@ -3,7 +3,7 @@
 Plugin Name: China Super ToolS
 Plugin URI: http://www.v7v3.com
 Description: 一款中文wordpress网站的集成工具插件（一个插件，搞定一切）。
-Version: 1.0
+Version: 1.1.0
 Author: NaiZui
 Author URI: http://www.v7v3.com
 */
