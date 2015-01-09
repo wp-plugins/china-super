@@ -5,7 +5,6 @@ Tags: functions.php,代码管理,admin,后台
 Requires at least: 3.5
 Tested up to: 4.1
 Stable tag: 1.0
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 很多站长喜欢在主题的functions.php添加代码来扩充网站功能，本插件提供一个在线管理代码片段的功能。
 
