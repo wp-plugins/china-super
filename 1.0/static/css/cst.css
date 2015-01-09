@@ -1,0 +1,40 @@
+#tip{
+	padding: 8px 0px 8px 10px;
+}
+#wct{
+	margin: 30px 15px 0px 15px;
+}
+#wct>h3{
+	padding: 0px 0px 15px 15px;
+}
+#wct .main{
+	overflow:hidden;
+}
+#wct .main>p>a{
+	margin: 0px 10px;
+}
+#wct .main .left{
+	margin-left:100px;
+	float: left;
+}
+#wct .main .info2{
+	white-space: pre-line;
+	}
+#wct .main .link{
+	padding-top:40px;
+	clear:left;
+}
+#wct .link>span{
+	margin-left:20px;
+}
+.h{
+	color:#F00;
+	font-size:120%;;
+}
+#the-list .inactive td{
+	padding-top: 20px; 
+	padding-bottom: 20px;
+}
+#the-list .inactive .plugin-title{
+	width: 10%;
+}
