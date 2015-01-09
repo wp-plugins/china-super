@@ -7,7 +7,7 @@ Tested up to: 4.1
 Stable tag: 1.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-很多站长喜欢在主题的functions.php添加代码来扩充网站功能，但是一旦更换主题之后之前添加的代码就丢失了。本插件提供一个在线管理代码片段的功能。
+很多站长喜欢在主题的functions.php添加代码来扩充网站功能，本插件提供一个在线管理代码片段的功能。
 
 == Description ==
 
