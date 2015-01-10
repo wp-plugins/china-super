@@ -346,7 +346,7 @@ Class CST{
 		header('Content-type:text/json');
 		$api = New API;
 		if( isset($_POST['todo']) ){
-			 $str = json_decode($api->get_api('http://www.v7v3.com/api/cst_install.php?mode=' . $_POST['todo']),true);
+			 $str = json_decode($api->get_api('http://cst.api.v7v3.com/cst_install.php?mode=' . $_POST['todo']),true);
 			 if( !isset($str['o']) ){
 				 if( $dis = $api->downMode($str['u']) ){
 					 $api->installMode($dis);

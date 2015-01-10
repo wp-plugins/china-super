@@ -2,7 +2,7 @@
 NameSPace com\v7v3\www\wordpress\CSTs\svn\system;
 Class API{
 	
-	const apiHOST = 'http://www.v7v3.com/api/cst.php';
+	const apiHOST = 'http://cst.api.v7v3.com/cst.php';
 	const apiAGENT = 'v7v3 CST API Bot1.0';
 	
 	public function get_api($url){
