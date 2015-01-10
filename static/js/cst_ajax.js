@@ -1,6 +1,6 @@
 jQuery(function($) {
 $(document).ready(function(e) {
-   var smxt=$('#sms'),xty=$('#yykz'),smzd=$('#smzd'),yyzd=$('#yyzd'),xtinfo=$('.info .xy'),zdinfo=$('.info .zdy'),install=$('.cst_install');
+   var smxt=$('#sms'),xty=$('#yykz'),smzd=$('#smzd'),yyzd=$('#yyzd'),xtinfo=$('.info .xy'),zdinfo=$('.info .zdy'),install=$('.cst_install'),uninstall=$('.cst_uninstall');
    smxt.on('click',function(){
 	    xtinfo.html('<img src="'+ wct_loading +'" />');
 	   	$.ajax( {
@@ -88,6 +88,25 @@ $(document).ready(function(e) {
 			if( data.install == 200 ){
 				alert('扩展安装成功。');
 			}else alert('安装扩展失败，远程服务器出错或离线！');
+		},
+		error : function() {
+			alert("服务器内部错误，请刷新后重试");
+		}
+		});
+	   });
+	   uninstall.on('click',function(){
+		$.ajax( {
+		url: ajaxurl,
+		data:{
+			action : 'cst_uninstall',
+			todo : $(this).attr('data')
+		},
+		type:'post',
+		cache:false,
+		success:function(data) {
+			if( data.install == 200 ){
+				alert('扩展卸载成功。');
+			}else alert('安装卸载失败，远程服务器出错或离线！');
 		},
 		error : function() {
 			alert("服务器内部错误，请刷新后重试");

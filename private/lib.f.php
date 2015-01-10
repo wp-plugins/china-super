@@ -15,11 +15,42 @@ Class m{
 		$Mzz[] = "/^(?:module name:)(?: )*(.+)/mi";
 		$Mzz[] = "/^(?:module effect:)(?: )*(.+)/mi";
 		$Mzz[] = "/^(?:module author:)(?: )*(.+)/mi";
+		$Mzz[] = "/^(?:module inc:)(?: )*(.+)/mi";
+		$Mzz[] = "/^(?:module option:)(?: )*(.+)/mi";
 		preg_match($Mzz[0],$str,$arr[]);
 		preg_match($Mzz[1],$str,$arr[]);
 		preg_match($Mzz[2],$str,$arr[]);
+		preg_match($Mzz[3],$str,$arr[]);
 		if( !$arr[0][1] ){
 			return false;
+		}
+		if( $arr[0][1] && $arr[1][1] && $arr[2][1] && $arr[3][1] && $arr[4][1] ){
+			return array(
+				'name' => $arr[0][1],
+				'effect' => $arr[1][1],
+				'author' => $arr[2][1],
+				'inc' => $arr[3][1],
+				'option' => $arr[4][1],
+				'route' => $file
+			);
+		}
+		if( $arr[0][1] && $arr[1][1] && $arr[2][1] && $arr[4][1] ){
+			return array(
+				'name' => $arr[0][1],
+				'effect' => $arr[1][1],
+				'author' => $arr[2][1],
+				'option' => $arr[4][1],
+				'route' => $file
+			);
+		}
+		if( $arr[0][1] && $arr[1][1] && $arr[2][1] && $arr[3][1] ){
+			return array(
+				'name' => $arr[0][1],
+				'effect' => $arr[1][1],
+				'author' => $arr[2][1],
+				'inc' => $arr[3][1],
+				'route' => $file
+			);
 		}
 		if( $arr[0][1] && $arr[1][1] && $arr[2][1] ){
 			return array(
@@ -88,9 +119,46 @@ Class m{
 				}  
 			}  
 		}  
-    return $stripStr;  
-} 
-
+		return $stripStr;  
+	}
+	
+	static public function copy_files($src,$dst) {  
+		$dir = opendir($src);
+		@mkdir($dst);
+		while(false !== ( $file = readdir($dir)) ) {
+			if(( $file != '.' ) && ( $file != '..' )) {
+				if( is_dir($src . '/' . $file) ) {
+					self::copy_files($src . '/' . $file,$dst . '/' . $file);
+					continue;
+				}else{
+					copy($src . '/' . $file,$dst . '/' . $file);
+				}
+			}
+		}
+		closedir($dir);
+		return;
+	}
+	
+	static public function deldir($dir) {
+		$dh=opendir($dir);
+		while($file=readdir($dh)) {
+		if($file!="." && $file!="..") {
+			$fullpath=$dir."/".$file;
+			if(!is_dir($fullpath)) {
+				unlink($fullpath);
+			}else{
+				deldir($fullpath);
+			}
+			}
+		}
+		closedir($dh);
+		if(rmdir($dir)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	static public function get_str($f,$case=1){
 		$port = self::switchMode($case);
 		$zz = "/cst::include\(['\"?:]([\w\/]+\.php)['\"?:]\);/";
